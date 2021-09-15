@@ -43,8 +43,37 @@ namespace GroundConnection.Services
                
             }
         }
+        // Approve a Job
+        public bool ApproveJob(JobApproval model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var jobs = ctx.
+                                JobApplications.SingleOrDefault(e => e.Id == model.JobApplicationId && e.Job.OwnerId == _UserId);
 
-       
-        
+
+                if (jobs is null && jobs.JobStatus != StatusOfJob.Pending) return false;
+                jobs.JobStatus = model.JobStatus;
+                jobs.Job.IsActive = false;
+                return ctx.SaveChanges() >= 1;
+            }
+        }
+
+        // Decline a Job
+        public bool DeclineJob(JobApproval model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var jobs = ctx.
+                               JobApplications.SingleOrDefault(e => e.Id == model.JobApplicationId && e.Job.OwnerId == _UserId);
+                if (jobs is null || jobs.JobStatus != StatusOfJob.Pending) return false;
+                jobs.JobStatus = model.JobStatus;
+                return ctx.SaveChanges() == 1;
+
+            }
+        }
+
+
+
     }
 }
