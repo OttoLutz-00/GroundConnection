@@ -33,6 +33,10 @@ namespace GroundConnection.Data
             return new ApplicationDbContext();
         }
 
+        public DbSet<Job> Jobs { get; set; }
+        public DbSet<User> Userss { get; set; }
+        public DbSet<JobApplication> JobApplications { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder
