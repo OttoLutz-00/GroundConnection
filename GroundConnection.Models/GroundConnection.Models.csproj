@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="JobApplication\JobApplicationCreate.cs" />
+    <Compile Include="JobApplication\JobApplicationListItem.cs" />
     <Compile Include="JobApplication\JobApproval.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
