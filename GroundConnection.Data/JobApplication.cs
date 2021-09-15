@@ -31,6 +31,7 @@ namespace GroundConnection.Data
         public string ImageUrl { get; set; }
         public string FileName { get; set; }
         public byte?[] FileContent { get; set; }
+        public Guid OwnerId { get; set; }
 
     }
 }
