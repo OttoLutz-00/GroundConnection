@@ -19,7 +19,7 @@ namespace GroundConnection.Data
         [Required]
         public string JobDescription { get; set; }
         public DateTimeOffset ExpectedCompletionDate { get; set; }
-        public bool IsActive { get; set; }
+        public bool IsActive { get; set; } = true;
         public string Location { get; set; }
         public virtual List<JobApplication> JobApplications { get; set; }
 
