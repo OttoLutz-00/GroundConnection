@@ -117,7 +117,25 @@ namespace GroundConnection.Services
             }
         }
 
-       
+        public JobApplicationDetail GetJobApplicationByJobApplicationId(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var jobApplication = ctx
+                                            .JobApplications
+                                            .SingleOrDefault(e => e.Id == id && e.OwnerId == _UserId);
+                if (jobApplication is null) return null;
+                return new JobApplicationDetail()
+                {
+                    Id = jobApplication.Id,
+                    CustomerName = jobApplication.Job.User.Name,
+                    DateCreated = jobApplication.Job.CreatedUTC,
+                    Location = jobApplication.Job.Location
+                };
+            }
+        }
+
+
 
 
 
