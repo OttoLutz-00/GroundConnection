@@ -26,7 +26,7 @@ namespace GroundConnection.WebAPI.Controllers
 
             if (!newUser.CreateUser(User))
                 return InternalServerError();
-            return Ok();
+            return Ok("User profile has been created");
         }
 
         public IHttpActionResult Get()
@@ -40,7 +40,7 @@ namespace GroundConnection.WebAPI.Controllers
         {
             ServiceUser serviceUser = CreateUserService();
             var user = serviceUser.GetUserById(id);
-            return Ok();
+            return Ok(user);
         }
 
         public IHttpActionResult Put(UpdateUser user)
@@ -52,7 +52,7 @@ namespace GroundConnection.WebAPI.Controllers
             if (!updatedUser.UpdateUser(user))
                 return InternalServerError();
 
-            return Ok();
+            return Ok("User information has been updated");
         }
 
         public IHttpActionResult Delete(int id)
@@ -62,7 +62,7 @@ namespace GroundConnection.WebAPI.Controllers
             if (!user.DeleteUser(id))
                 return InternalServerError();
 
-            return Ok();
+            return Ok("User has been successfully deleted");
         }
     }
 }
