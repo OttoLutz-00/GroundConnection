@@ -103,6 +103,20 @@ namespace GroundConnection.Services
             }
         }
 
+        // Delete Job Application by user nthat applied for the Job
+        public bool DeleteJobApplication(int id)
+        {
+            using(var ctx=new ApplicationDbContext())
+            {
+                var jobApplication = ctx
+                                            .JobApplications
+                                            .SingleOrDefault(e => e.Id == id && e.OwnerId == _UserId);
+                if (jobApplication is null) return false;
+                ctx.JobApplications.Remove(jobApplication);
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
        
 
 
