@@ -31,7 +31,7 @@ namespace GroundConnection.Services
                 };
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Userss.Add(userInfo);
+                ctx.Users.Add(userInfo);
                 return ctx.SaveChanges() == 1;
             }
 
@@ -61,7 +61,7 @@ namespace GroundConnection.Services
             {
                 var allUsers =
                     ctx
-                    .Userss
+                    .Users
                     .Where(u => u.OwnerId == _userId)
                     .Select(
                         u =>
@@ -83,7 +83,7 @@ namespace GroundConnection.Services
             {
                 var user =
                     ctx
-                    .Userss
+                    .Users
                     .Single(u => u.Id == id && u.OwnerId == _userId);
                 return
                     new UserDetails
@@ -105,7 +105,7 @@ namespace GroundConnection.Services
             {
                 var updateUser =
                     ctx
-                    .Userss
+                    .Users
                     .Single(u => u.Id == model.Id && u.OwnerId == _userId);
 
                 updateUser.Id = model.Id;
@@ -126,9 +126,9 @@ namespace GroundConnection.Services
             {
                 var user =
                     ctx
-                    .Userss
+                    .Users
                     .Single(u => u.Id == userId && u.OwnerId == _userId);
-                ctx.Userss.Remove(user);
+                ctx.Users.Remove(user);
 
                 return ctx.SaveChanges() == 1;
             }

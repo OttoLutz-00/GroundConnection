@@ -34,7 +34,7 @@ namespace GroundConnection.Data
         }
 
         public DbSet<Job> Jobs { get; set; }
-        public DbSet<User> Userss { get; set; }
+        new public DbSet<User> Users { get; set; }
         public DbSet<JobApplication> JobApplications { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
