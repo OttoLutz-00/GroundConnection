@@ -85,6 +85,23 @@ namespace GroundConnection.Services
 
             }
         }
+        // Get all Job application By Job Id
+        public IEnumerable<JobApplicationListItem> GetJobApplicationsByJobId(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var jobApplication = ctx.
+                                        JobApplications.Where(e => e.JobId == id && e.Job.OwnerId == _UserId)
+                                        .Select(e => new JobApplicationListItem
+                                        {
+                                            Id = e.Id,
+                                            UserName = e.User.Name,
+                                            AcceptedDate = e.DateAccepted,
+                                            Skills = e.User.Skills
+                                        }).ToList();
+                return jobApplication;
+            }
+        }
 
        
 

@@ -10,7 +10,7 @@ namespace GroundConnection.Models.JobApplication
     {
         public string UserName { get; set; }
         public string Skills { get; set; }
-        public DateTimeOffset AcceptedDate { get; set; }
+        public DateTimeOffset? AcceptedDate { get; set; }
         public int Id { get; set; }
 
 
