@@ -57,6 +57,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UserCreate.cs" />
+    <Compile Include="JobModels\JobCreate.cs" />
     <Compile Include="JobApplication\JobApplicationCreate.cs" />
     <Compile Include="JobApplication\JobApplicationDetail.cs" />
     <Compile Include="JobApplication\JobApplicationListItem.cs" />
