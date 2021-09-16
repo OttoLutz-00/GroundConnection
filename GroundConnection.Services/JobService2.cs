@@ -36,5 +36,25 @@ namespace GroundConnection.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
+        public IEnumerable<JobListItem> GetJobs()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                ctx.Jobs.Where(e => e.OwnerId == _userId)
+                .Select(e => new JobListItem()
+                {
+                    Id = e.Id,
+                    UserId = e.UserId,
+                    CreatedUTC = e.CreatedUTC,
+                    JobDescription = e.JobDescription,
+                    ExpectedCompletionDate = e.ExpectedCompletionDate,
+                    IsActive = e.IsActive,
+                    Location = e.Location,
+                });
+                return query.ToArray();
+            }
+        }
     }
 }
