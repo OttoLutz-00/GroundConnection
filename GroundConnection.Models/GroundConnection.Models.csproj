@@ -60,6 +60,9 @@
     <Compile Include="JobApplication\JobApplicationCreate.cs" />
     <Compile Include="JobApplication\JobApproval.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UpdateUser.cs" />
+    <Compile Include="UserDetails.cs" />
+    <Compile Include="UserListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
