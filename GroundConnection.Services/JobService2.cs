@@ -18,6 +18,7 @@ namespace GroundConnection.Services
             _userId = userId;
         }
 
+        // CREATE
         public bool CreateJob(JobCreate model)
         {
             var entity = new Job()
@@ -38,6 +39,7 @@ namespace GroundConnection.Services
             }
         }
 
+        // READ
         public IEnumerable<JobListItem> GetJobs()
         {
             using (var ctx = new ApplicationDbContext())
@@ -58,6 +60,7 @@ namespace GroundConnection.Services
             }
         }
 
+        // READ BY ID
         public JobDetail GetJobById(int id)
         {
             using (var ctx = new ApplicationDbContext())
@@ -80,5 +83,34 @@ namespace GroundConnection.Services
                 };
             }
         }
+
+        // UPDATE BY ID
+        public bool UpdateJob(JobEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Jobs.Single(e => e.Id == model.Id && e.OwnerId == _userId);
+
+                var jobApplicationsForThisJob = new JobApplicationServices(_userId).GetJobApplicationsByJobId(model.Id);
+
+                bool hasApplications = jobApplicationsForThisJob.Count() > 0;
+
+                if (hasApplications)
+                {
+                    return false;
+                }
+                else
+                {
+                    entity.JobDescription = model.JobDescription;
+                    entity.ExpectedCompletionDate = model.ExpectedCompletionDate;
+                    entity.Location = model.Location;
+                    return ctx.SaveChanges() == 1;
+                }
+            }
+        }
+
+        // UPDATE ISVALID (soft delete)
+
+
     }
 }
