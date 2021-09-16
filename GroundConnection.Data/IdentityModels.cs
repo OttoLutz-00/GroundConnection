@@ -47,6 +47,11 @@ namespace GroundConnection.Data
                 .Configurations
                 .Add(new IdentityUserLoginConfiguration())
                 .Add(new IdentityUserRoleConfiguration());
+
+            modelBuilder.Entity<Job>()
+             .HasRequired(c => c.User)
+             .WithMany()
+             .WillCascadeOnDelete(false);
         }
     }
     // DbSets

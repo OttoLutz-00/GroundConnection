@@ -40,7 +40,7 @@ namespace GroundConnection.WebAPI.Controllers
         {
             ServiceUser serviceUser = CreateUserService();
             var user = serviceUser.GetUserById(id);
-            return Ok();
+            return Ok(user);
         }
 
         public IHttpActionResult Put(UpdateUser user)
