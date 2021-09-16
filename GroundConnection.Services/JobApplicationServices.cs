@@ -51,10 +51,23 @@ namespace GroundConnection.Services
                 var jobs = ctx.
                                 JobApplications.SingleOrDefault(e => e.Id == model.JobApplicationId && e.Job.OwnerId == _UserId);
 
-
                 if (jobs is null && jobs.JobStatus != StatusOfJob.Pending) return false;
                 jobs.JobStatus = model.JobStatus;
                 jobs.Job.IsActive = false;
+                ctx.SaveChanges();
+
+                var jobApplication = ctx.
+                               JobApplications.Where(e => e.Job.Id == model.JobId && e.Job.OwnerId == _UserId);
+                foreach(var job in jobApplication)
+                {
+                    if (job.JobStatus != StatusOfJob.Approved)
+                    {
+                        job.JobStatus = StatusOfJob.Declined;
+                    }
+                }
+
+
+
                 return ctx.SaveChanges() >= 1;
             }
         }
@@ -72,6 +85,39 @@ namespace GroundConnection.Services
 
             }
         }
+        // Get all Job application By Job Id
+        public IEnumerable<JobApplicationListItem> GetJobApplicationsByJobId(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var jobApplication = ctx.
+                                        JobApplications.Where(e => e.JobId == id && e.Job.OwnerId == _UserId)
+                                        .Select(e => new JobApplicationListItem
+                                        {
+                                            Id = e.Id,
+                                            UserName = e.User.Name,
+                                            AcceptedDate = e.DateAccepted,
+                                            Skills = e.User.Skills
+                                        }).ToList();
+                return jobApplication;
+            }
+        }
+
+        // Delete Job Application by user nthat applied for the Job
+        public bool DeleteJobApplication(int id)
+        {
+            using(var ctx=new ApplicationDbContext())
+            {
+                var jobApplication = ctx
+                                            .JobApplications
+                                            .SingleOrDefault(e => e.Id == id && e.OwnerId == _UserId);
+                if (jobApplication is null) return false;
+                ctx.JobApplications.Remove(jobApplication);
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+       
 
 
 

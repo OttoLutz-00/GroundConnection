@@ -10,6 +10,7 @@ namespace GroundConnection.Models.JobApplication
     public class JobApproval
     {
         public int JobApplicationId { get; set; }
+        public int JobId { get; set; }
         public StatusOfJob JobStatus { get; set; }
     }
 }
