@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace GroundConnection.Services
 {
-    public class JobService
+    public class JobService2
     {
         private readonly Guid _userId;
 
-        public JobService(Guid userId)
+        public JobService2(Guid userId)
         {
             _userId = userId;
         }
