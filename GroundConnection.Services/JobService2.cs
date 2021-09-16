@@ -1,4 +1,5 @@
 ﻿using GroundConnection.Data;
+using GroundConnection.Models.JobApplication;
 using GroundConnection.Models.JobModels;
 using System;
 using System.Collections.Generic;
@@ -54,6 +55,29 @@ namespace GroundConnection.Services
                     Location = e.Location,
                 });
                 return query.ToArray();
+            }
+        }
+
+        public JobDetail GetJobById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Jobs.Single(e => e.Id == id);
+
+                var service = new JobApplicationServices(_userId);
+                var jobApplications = service.GetJobApplicationsByJobId(id);
+                
+                return new JobDetail()
+                {
+                    Id = entity.Id,
+                    UserId = entity.UserId,
+                    CreatedUTC = entity.CreatedUTC,
+                    JobDescription = entity.JobDescription,
+                    ExpectedCompletionDate = entity.ExpectedCompletionDate,
+                    IsActive = entity.IsActive,
+                    Location = entity.Location,
+                    JobApplications = jobApplications
+                };
             }
         }
     }
