@@ -19,7 +19,7 @@ namespace GroundConnection.WebAPI.Controllers
             var services = new JobApplicationServices(userid);
             return services;
         }
-
+        [Route("api/JobApplication/")]
         [HttpPost]
         public IHttpActionResult Apply(JobApplicationCreate model)
         {
@@ -50,7 +50,7 @@ namespace GroundConnection.WebAPI.Controllers
 
 
         }
-
+        [Route("api/JobApplication/JobId/{id}")]
         [HttpGet]
         public IHttpActionResult GetAllJobApplicationByJobId(int id)
         {
@@ -60,7 +60,7 @@ namespace GroundConnection.WebAPI.Controllers
 
         }
 
-
+        [Route("api/JobApplication/ApplicationId/{id}")]
         [HttpGet]
         public IHttpActionResult GetAllJobApplicationById(int id)
         {
