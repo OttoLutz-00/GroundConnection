@@ -17,7 +17,7 @@ namespace GroundConnection.Services
             _userId = userId;
         }
 
-        public bool CreateUser(User model)
+        public bool CreateUser(UserCreate model)
         {
             var userInfo =
                 new User()
