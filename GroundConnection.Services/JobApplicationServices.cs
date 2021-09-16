@@ -51,10 +51,23 @@ namespace GroundConnection.Services
                 var jobs = ctx.
                                 JobApplications.SingleOrDefault(e => e.Id == model.JobApplicationId && e.Job.OwnerId == _UserId);
 
-
                 if (jobs is null && jobs.JobStatus != StatusOfJob.Pending) return false;
                 jobs.JobStatus = model.JobStatus;
                 jobs.Job.IsActive = false;
+                ctx.SaveChanges();
+
+                var jobApplication = ctx.
+                               JobApplications.Where(e => e.Job.Id == model.JobId && e.Job.OwnerId == _UserId);
+                foreach(var job in jobApplication)
+                {
+                    if (job.JobStatus != StatusOfJob.Approved)
+                    {
+                        job.JobStatus = StatusOfJob.Declined;
+                    }
+                }
+
+
+
                 return ctx.SaveChanges() >= 1;
             }
         }
@@ -89,6 +102,8 @@ namespace GroundConnection.Services
                 return jobApplication;
             }
         }
+
+       
 
 
 
