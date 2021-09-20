@@ -1,4 +1,5 @@
 ﻿using GroundConnection.Models.JobApplication;
+using GroundConnection.Models.JobModels;
 using GroundConnection.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -31,7 +32,7 @@ namespace GroundConnection.WebAPI.Controllers
             if (!service.ApplyForJob(model))
                 return BadRequest("You cannot Apply for this Job");
 
-            return Ok("Congratulation, YOur Job Application is succsfull");
+            return Ok("Congratulation, Your Job Application is succsfull");
 
 
         }
@@ -83,6 +84,48 @@ namespace GroundConnection.WebAPI.Controllers
             
 
         }
+        [Route("api/UploadImage")]
+        [HttpPost]
+        public IHttpActionResult UploadProofOfCompletion(ProofOfCompletion model)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            var service = CreateJobApplicationServices();
+            if (!service.UploadImageForCompletion(model))
+            {
+                return BadRequest("Cannot Attach proof of Completion");
+            }
+            return Ok("Image uploaded  Succesfully");
+        }
+
+        [Route("api/EditImage")]
+        [HttpPut]
+        public IHttpActionResult EditProofOfCompletion(ProofOfCompletion model)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            var service = CreateJobApplicationServices();
+            if (!service.UploadImageForCompletion(model))
+            {
+                return BadRequest("Cannot Edit proof of Completion");
+            }
+            return Ok("Proof Of Completion Succesfully Edited");
+        }
+
+        [Route("api/DeleteProofOfCompletion")]
+        [HttpDelete]
+        public IHttpActionResult DeleteProofOfCompletion(int id)
+        {
+         
+            var service = CreateJobApplicationServices();
+            if (!service.DeleteImage(id))
+            {
+                return BadRequest("Unable to delete Image");
+            }
+            return Ok("Proof Of Completion Succesfully Deleted");
+        }
+
+
 
     }
 }
