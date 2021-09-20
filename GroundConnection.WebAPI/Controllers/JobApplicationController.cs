@@ -29,7 +29,7 @@ namespace GroundConnection.WebAPI.Controllers
             var service = CreateJobApplicationServices();
 
             if (!service.ApplyForJob(model))
-                return InternalServerError();
+                return BadRequest("You cannot Apply for this Job");
 
             return Ok("Congratulation, YOur Job Application is succsfull");
 
