@@ -1,5 +1,6 @@
 ﻿using GroundConnection.Data;
 using GroundConnection.Models.JobApplication;
+using GroundConnection.Models.JobModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -128,11 +129,65 @@ namespace GroundConnection.Services
                 if (jobApplication is null) return null;
                 return new JobApplicationDetail()
                 {
-                    Id = jobApplication.Id,
+                    JobApplucationId = jobApplication.Id,
                     CustomerName = jobApplication.Job.User.Name,
                     DateCreated = jobApplication.Job.CreatedUTC,
                     Location = jobApplication.Job.Location
                 };
+            }
+        }
+        public bool UploadImageForCompletion(ProofOfCompletion model)
+        {
+
+            using (var ctx = new ApplicationDbContext())
+            {
+                var jobApplication = ctx
+                                            .JobApplications
+                                            .SingleOrDefault(e => e.Id ==model.JobApplicationId && e.OwnerId == _UserId);
+                if (jobApplication.JobStatus != StatusOfJob.Approved)
+                {
+                    return false;
+                }
+                if (jobApplication.ImageUrl != null) return false;
+                jobApplication.ImageUrl = model.ImageUrl;
+                return ctx.SaveChanges() == 1;
+
+            }
+        }
+
+        public bool EditImage(ProofOfCompletion model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var jobApplication = ctx
+                                            .JobApplications
+                                            .SingleOrDefault(e => e.Id == model.JobApplicationId && e.OwnerId == _UserId);
+                if (jobApplication.JobStatus != StatusOfJob.Approved)
+                {
+                    return false;
+                }
+                if (jobApplication.ImageUrl == null) return false;
+                jobApplication.ImageUrl = model.ImageUrl;
+                return ctx.SaveChanges() == 1;
+
+            }
+        }
+
+        public bool DeleteImage(int jobApplicationId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var jobApplication = ctx
+                                            .JobApplications
+                                            .SingleOrDefault(e => e.Id == jobApplicationId && e.OwnerId == _UserId);
+                if (jobApplication.JobStatus != StatusOfJob.Approved)
+                {
+                    return false;
+                }
+                if (jobApplication.ImageUrl == null) return false;
+                jobApplication.ImageUrl = null;
+                return ctx.SaveChanges() == 1;
+
             }
         }
 
