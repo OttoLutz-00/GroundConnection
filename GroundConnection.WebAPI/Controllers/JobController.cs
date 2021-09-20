@@ -87,7 +87,7 @@ namespace GroundConnection.WebAPI.Controllers
 
             if (!service.UpdateJob(model))
             {
-                return InternalServerError();
+                return BadRequest("Error Bad Request, make sure there are no existing applications for this job.");
             }
             return Ok("Job updated successfully.");
         }
