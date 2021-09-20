@@ -35,6 +35,7 @@ namespace GroundConnection.WebAPI.Controllers
 
 
         }
+        [Route("api/Approval")]
         [HttpPut]
         public IHttpActionResult Approve(JobApproval model)
         {
