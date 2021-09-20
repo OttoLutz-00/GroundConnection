@@ -22,10 +22,11 @@ namespace GroundConnection.Services
             {
                 var job = ctx
                                 .Jobs.SingleOrDefault(e => e.Id == model.JobId);
-                if(job is null || job.IsActive == false)   // check if the job is still active
+                if(job is null || job.IsActive == false||job.OwnerId==_UserId)   // check if the job is still active
                 {
                     return false;
                 }
+                
                 //check if Applicatnt has applied before for the job
                 var jobApplication = ctx.JobApplications.SingleOrDefault(e => e.OwnerId == _UserId&&e.JobId==model.JobId);
 
