@@ -110,7 +110,17 @@ namespace GroundConnection.Services
         }
 
         // UPDATE ISVALID (soft delete)
+        public bool UpdateJobActive(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Jobs.SingleOrDefault(e => e.OwnerId == _userId && e.Id == id);
 
+                // Flips the value of IsActive
+                entity.IsActive = !entity.IsActive;
 
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
