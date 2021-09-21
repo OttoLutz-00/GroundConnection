@@ -34,7 +34,7 @@ namespace GroundConnection.Data
         }
 
         public DbSet<Job> Jobs { get; set; }
-        public DbSet<User> Userss { get; set; }
+        new public DbSet<User> Users { get; set; }
         public DbSet<JobApplication> JobApplications { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -47,6 +47,11 @@ namespace GroundConnection.Data
                 .Configurations
                 .Add(new IdentityUserLoginConfiguration())
                 .Add(new IdentityUserRoleConfiguration());
+
+            modelBuilder.Entity<Job>()
+             .HasRequired(c => c.User)
+             .WithMany()
+             .WillCascadeOnDelete(false);
         }
     }
     // DbSets

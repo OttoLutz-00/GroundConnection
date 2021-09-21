@@ -17,8 +17,9 @@ namespace GroundConnection.Data
     public class JobApplication
     {
         public int Id { get; set; }
-        public int JobId { get; set; }
         [ForeignKey(nameof(Job))]
+        public int JobId { get; set; }
+        
         public virtual Job Job { get; set; }
 
         [ForeignKey(nameof(User))]
@@ -31,6 +32,6 @@ namespace GroundConnection.Data
         public string ImageUrl { get; set; }
         public string FileName { get; set; }
         public byte?[] FileContent { get; set; }
-
+        public Guid OwnerId { get; set; }
     }
 }
