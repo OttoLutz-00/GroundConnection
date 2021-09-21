@@ -67,6 +67,7 @@ namespace GroundConnection.Services
                         u =>
                         new UserListItem
                         {
+                            Id = u.Id,
                             Name = u.Name,
                             Location = u.Location,
                             PhoneNumber = u.PhoneNumber,
@@ -88,6 +89,7 @@ namespace GroundConnection.Services
                 return
                     new UserDetails
                     {
+                        Id = user.Id,
                         Name = user.Name,
                         Location = user.Location,
                         PhoneNumber = user.PhoneNumber,

@@ -8,7 +8,7 @@ namespace GroundConnection.Models.JobModels
 {
     public class ProofOfCompletion
     {
-        public int JobApplicationId { get; set; }
+        // public int JobApplicationId { get; set; }
         public string ImageUrl { get; set; }
     }
 }

@@ -136,14 +136,14 @@ namespace GroundConnection.Services
                 };
             }
         }
-        public bool UploadImageForCompletion(ProofOfCompletion model)
+        public bool UploadImageForCompletion(ProofOfCompletion model, int id)
         {
 
             using (var ctx = new ApplicationDbContext())
             {
                 var jobApplication = ctx
                                             .JobApplications
-                                            .SingleOrDefault(e => e.Id ==model.JobApplicationId && e.OwnerId == _UserId);
+                                            .SingleOrDefault(e => e.Id == id && e.OwnerId == _UserId);
                 if (jobApplication.JobStatus != StatusOfJob.Approved)
                 {
                     return false;
@@ -155,13 +155,13 @@ namespace GroundConnection.Services
             }
         }
 
-        public bool EditImage(ProofOfCompletion model)
+        public bool EditImage(ProofOfCompletion model, int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var jobApplication = ctx
                                             .JobApplications
-                                            .SingleOrDefault(e => e.Id == model.JobApplicationId && e.OwnerId == _UserId);
+                                            .SingleOrDefault(e => e.Id == id && e.OwnerId == _UserId);
                 if (jobApplication.JobStatus != StatusOfJob.Approved)
                 {
                     return false;
