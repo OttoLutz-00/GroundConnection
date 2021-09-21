@@ -9,7 +9,9 @@ namespace GroundConnection.Models
 {
     public class UserDetails
     {
+        public int Id { get; set; }
         [Required]
+        [Display(Name="Job Owner")]
         public string Name { get; set; }
         [Required]
         public string Location { get; set; }

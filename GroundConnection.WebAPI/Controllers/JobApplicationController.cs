@@ -84,28 +84,28 @@ namespace GroundConnection.WebAPI.Controllers
             
 
         }
-        [Route("api/UploadImage")]
+        [Route("api/UploadImage/{id}")]
         [HttpPost]
-        public IHttpActionResult UploadProofOfCompletion(ProofOfCompletion model)
+        public IHttpActionResult UploadProofOfCompletion(ProofOfCompletion model, int id)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             var service = CreateJobApplicationServices();
-            if (!service.UploadImageForCompletion(model))
+            if (!service.UploadImageForCompletion(model, id))
             {
                 return BadRequest("Cannot Attach proof of Completion");
             }
             return Ok("Image uploaded  Succesfully");
         }
 
-        [Route("api/EditImage")]
+        [Route("api/EditImage/{id}")]
         [HttpPut]
-        public IHttpActionResult EditProofOfCompletion(ProofOfCompletion model)
+        public IHttpActionResult EditProofOfCompletion(ProofOfCompletion model, int id)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             var service = CreateJobApplicationServices();
-            if (!service.UploadImageForCompletion(model))
+            if (!service.EditImage(model, id))
             {
                 return BadRequest("Cannot Edit proof of Completion");
             }
