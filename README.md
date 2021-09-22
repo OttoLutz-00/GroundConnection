@@ -72,7 +72,8 @@ Db Diagram we used to help give us a visual representation of our tables and all
 
 
 ### Project Planning Document
-Here is our Project Planning Document that has a good look at what we all contributed and what our tables and timeline looked like and also a snapshot of our Db Diagram *hot mess express* before... and *nice sleek, clean* after!Project Planing Document](https://docs.google.com/document/d/1pjusESy_kywEwCCO9OtsecHi0L959ajhZVJFuLoyxsA/edit?usp=sharing)
+Here is our Project Planning Document that has a good look at what we all contributed and what our tables and timeline looked like and also a snapshot of our Db Diagram *hot mess express* before... and *nice sleek, clean* after!
+[Project Planing Document](https://docs.google.com/document/d/1pjusESy_kywEwCCO9OtsecHi0L959ajhZVJFuLoyxsA/edit?usp=sharing)
 
 
 
