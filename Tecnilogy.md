@@ -1,10 +1,11 @@
 ## Technology Used
-
+```
 We used C# in this application as we are students currently learning and this is what we know.....well......at least sort of know! 
 
 We first started with an idea like lawn mowing and landscaping. We quickly ran with it and created the Asana board first. Over the course of about 2 days, we had it in a good place, we started the DB Diagram. At first, as you can see in our Project Planning Document, this was a *hot mess express* but after ending the 2nd day and coming back on the 3rd day with fresh minds, we re-evaluated **both** the Asana board *and* the DB Diagram and came up with a much better, simpler DB Diagram, and more precice Asana board. After divying up all the work, we got started coding at the very end of the 3rd day and really starting on the 4th!
 
 Below you can see the tools we used to help keep track of things:
+```
 
 ### Asana
 We used this to plan out our app with user stories, tasks and tickets, also to keep track of stretch goals, and to mark things done as they were getting done! We all agree that this is *much* more user friendly than Trello!
