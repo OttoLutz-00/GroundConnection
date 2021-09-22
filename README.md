@@ -10,9 +10,13 @@ When you post a job, other users will be able to see your job, and apply to it. 
 
 After approval, the approved person will come to the location listed in your Job posting, complete the job, take a/many picture(s) of the completed job and upload them to the Proof of Completion section for you to review!
 
+- [Why Do You Need this?](./AppNeed.md)
+
 - [Technology Used](./Tecnilogy.md)
 
-- [Why Do You Need this?](./AppNeed.md)
+- [Stretch Goals](./StretchGoals.md)
+
+
 
 ***
 
