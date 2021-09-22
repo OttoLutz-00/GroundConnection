@@ -1,3 +1,4 @@
+```
 ## Stretch Goals:
 
 This app will have more features in the future! Here is a list of planned upgrades:
@@ -8,3 +9,4 @@ This app will have more features in the future! Here is a list of planned upgrad
 - Pricing tools to help aid in picking the right person for the job
 - Notifications
 - Time constraints on ratings and job completion confirmation 
+```
