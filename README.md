@@ -64,7 +64,7 @@ Below you can see the tools we used to help keep track of things:
 ### Asana
 We used this to plan out our app with user stories, tasks and tickets, also to keep track of stretch goals, and to mark things done as they were getting done! We all agree that this is *much* more user friendly than Trello!
 [Asana Board](https://app.asana.com/0/1200972429355465/board)
-https://app.asana.com/0/1200972429355465/board
+
 
 ### Db Diagram
 Db Diagram we used to help give us a visual representation of our tables and all the foreign keys needed
