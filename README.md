@@ -68,8 +68,8 @@ We used this to plan out our app with user stories, tasks and tickets, also to k
 
 ### Db Diagram
 Db Diagram we used to help give us a visual representation of our tables and all the foreign keys needed
+[Db Diagaram](https://dbdiagram.io/d/613f6e12825b5b0146ffe6df)
 
-https://dbdiagram.io/d/613f6e12825b5b0146ffe6df
 
 ### Project Planning Document
 Here is our Project Planning Document that has a good look at what we all contributed and what our tables and timeline looked like and also a snapshot of our Db Diagram *hot mess express* before... and *nice sleek, clean* after!
