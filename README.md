@@ -1,6 +1,7 @@
 # Welcome to Ground Connection!
 
 ## What is Ground Connection?
+```
 
 Ground Connection is an app that is used specifically for any landscaping job you need done, but might not have the means to complete yourself! Maybe you don't have the right tools, maybe you have an injury, maybe you are on vacation, and simply can not do it yourself, or maybe you just don't WANT to do it yourself! 
 
@@ -9,6 +10,7 @@ In comes Ground Connection! All you need to do is set up your user account where
 When you post a job, other users will be able to see your job, and apply to it. You may get more than 1 applicant, and that's ok, that's what you want! When you get applicants, all you have to do is go into your posted job to view all the applications, look through them to find the applicant you want to complete the job and approve their application!
 
 After approval, the approved person will come to the location listed in your Job posting, complete the job, take a/many picture(s) of the completed job and upload them to the Proof of Completion section for you to review!
+```
 
 - [Why Do You Need this?](./AppNeed.md)
 
